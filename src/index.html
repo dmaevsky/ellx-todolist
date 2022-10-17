@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script type="ellx">
+    import { count, increaseCount } from "./scripts/counter.js"
+
+    // { session } = require('$app')
+    // pages = {
+    //   welcome: require('./welcome.html'),
+    //   about: require('./about.html'),
+    //   todos: require('./todos.html')
+    // }
+    // Router is basically a function session.route => [pageTitle, CurrentPage]
+    // pageKey = session.route.slice(1) || 'welcome'
+    pageTitle = 'Welcome' //pageKey in pages ? pageKey[0].toUpperCase() + pageKey.slice(1) : 'Not found'
+    // CurrentPage = pages[pageKey] || require('./404.html')
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title data-bind="innerHTML=pageTitle">...</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ellx.io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://ellx.io/favicon-16x16.png">
+  <link rel="mask-icon" href="https://ellx.io/safari-pinned-tab.svg" color="#5bbad5">
+</head>
+
+<body>
+  <a href="/">Welcome</a>
+  <a href="/about">About</a>
+  <a href="/todos">Todos</a>
+  <a href="/whatever">404</a>
+
+  <div>Count is bla <span data-bind="innerHTML=count">...</span></div>
+  <button data-bind="@click=increaseCount">+</button>
+
+  <!-- <div data-src="file:///pages/welcome.html" data-bind="innerHTML=CurrentPage()">Welcome!</div> -->
+</body>
+
+</html>

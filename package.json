@@ -1,0 +1,18 @@
+{
+  "name": "todo-list",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Ellx2 Todo example",
+  "devDependencies": {
+    "@ellx/framework": "../ellx2"
+  },
+  "scripts": {
+    "debug": "node --inspect-brk node_modules/@ellx/framework/src/cli.js dev --srcDir src",
+    "dev": "node_modules/@ellx/framework/src/cli.js dev --srcDir src"
+  },
+  "author": "Dmitry Maevsky",
+  "license": "MIT",
+  "dependencies": {
+    "tinyx": "^2.2.0"
+  }
+}
