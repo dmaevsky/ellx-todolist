@@ -3,25 +3,17 @@
 <head>
   <script type="ellx">
     import { count, increaseCount } from "./scripts/counter.js"
+    import { router, currentPage } from "./pages/currentPage.js"
 
-    // { session } = require('$app')
-    // pages = {
-    //   welcome: require('./welcome.html'),
-    //   about: require('./about.html'),
-    //   todos: require('./todos.html')
-    // }
-    // Router is basically a function session.route => [pageTitle, CurrentPage]
-    // pageKey = session.route.slice(1) || 'welcome'
-    pageTitle = 'Welcome' //pageKey in pages ? pageKey[0].toUpperCase() + pageKey.slice(1) : 'Not found'
-    // CurrentPage = pages[pageKey] || require('./404.html')
+    page = currentPage(router.path)
   </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title data-bind="innerHTML=pageTitle">...</title>
+  <title data-bind="innerHTML=page.title">...</title>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="https://ellx.io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://ellx.io/favicon-16x16.png">
+  <link rel="icon" sizes="32x32" href="https://ellx.io/favicon-32x32.ea3e9899.png">
+  <link rel="icon" sizes="16x16" href="https://ellx.io/favicon-16x16.7ead8a00.png">
   <link rel="mask-icon" href="https://ellx.io/safari-pinned-tab.svg" color="#5bbad5">
 </head>
 
@@ -31,10 +23,10 @@
   <a href="/todos">Todos</a>
   <a href="/whatever">404</a>
 
-  <div>Count is bla <span data-bind="innerHTML=count">...</span></div>
+  <div>Count is <span data-bind="innerHTML=count">...</span></div>
   <button data-bind="@click=increaseCount">+</button>
 
-  <!-- <div data-src="file:///pages/welcome.html" data-bind="innerHTML=CurrentPage()">Welcome!</div> -->
+  <div data-bind="innerHTML=page.body">...</div>
 </body>
 
 </html>

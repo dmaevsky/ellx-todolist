@@ -1,10 +1,9 @@
 <script type="ellx">
-  todos = [
-    { text: 'Learn Ellx', done: false },
-    { text: 'Deploy my app', done: false }
-  ]
+  todos = [{ text: 'Learn Ellx', done: false }, { text: 'Deploy my app', done: false }]
 </script>
 
-<ul for { text, done } of todos>
+<pre data-bind="innerHTML=JSON.stringify(todos, null, 2)">...</pre>
+
+<!-- <ul for { text, done } of todos>
   <li class:text-strikethrough={done}>{ text }</li>
-</ul>
+</ul> -->

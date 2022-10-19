@@ -13,6 +13,7 @@
   "author": "Dmitry Maevsky",
   "license": "MIT",
   "dependencies": {
+    "@ellx/router": "^0.1.3",
     "tinyx": "^2.2.0"
   }
 }
