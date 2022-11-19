@@ -4,29 +4,35 @@
   <script type="ellx">
     import { count, increaseCount } from "./scripts/counter.js"
     import { router, currentPage } from "./pages/currentPage.js"
+    import Test from "./pages/test_component.html"
 
     page = currentPage(router.path)
   </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title data-bind="innerHTML=page.title">...</title>
+  <title data-is="page.title"></title>
 
   <link rel="icon" sizes="32x32" href="https://ellx.io/favicon-32x32.ea3e9899.png">
   <link rel="icon" sizes="16x16" href="https://ellx.io/favicon-16x16.7ead8a00.png">
   <link rel="mask-icon" href="https://ellx.io/safari-pinned-tab.svg" color="#5bbad5">
+  <!-- <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"> -->
 </head>
 
 <body>
-  <a href="/">Welcome</a>
-  <a href="/about">About</a>
-  <a href="/todos">Todos</a>
-  <a href="/whatever">404</a>
+  <div class="container">
+    <a href="/">Welcome</a>
+    <a href="/about">About</a>
+    <a href="/todos">Todos</a>
+    <a href="/whatever">404</a>
 
-  <div>Count is <span data-bind="innerHTML=count">...</span></div>
-  <button data-bind="@click=increaseCount">+</button>
+    <div>Count is <span data-is="count"></span></div>
+    <button data-bind="@click=increaseCount">+</button>
 
-  <div data-bind="innerHTML=page.body">...</div>
+    <div data-is="Test; { color: 'orange' }"></div>
+
+    <div data-is="page.body"></div>
+  </div>
 </body>
 
 </html>
