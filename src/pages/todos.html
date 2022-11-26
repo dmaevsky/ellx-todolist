@@ -1,20 +1,33 @@
 <script type="ellx">
-  todos = [
-    { text: 'Learn Ellx!!!', done: true },
-    { text: 'Deploy my app', done: false }
-  ]
+  import { localState, todos, addTodo, editTodo, removeTodo, startEditing } from '../scripts/todos.js';
+
+  [editing, setEditing] = localState(null);
+
 </script>
 
-<pre data-is="JSON.stringify(todos, null, 2)"></pre>
+<pre data-is="JSON.stringify([...todos.values()], null, 2)"></pre>
+<pre data-is="JSON.stringify(editing)"></pre>
 
-<ul data-for="each todos as { text, done }">
+<ul data-for="[id, { text, done }] of todos">
   <li>
-    <input type="checkbox" data-bind="checked=done">
-    <span data-is="text"></span>
+    <input type="checkbox" data-bind="
+      checked = done
+      @input = e => editTodo(id, { done: e.target.checked })
+    ">
+    <input data-if="editing === id" placeholder = "What's next?" data-bind="
+      value = text
+      @mount = el => startEditing(el, () => setEditing(null))
+      @input = e => editTodo(id, { text: e.target.value })
+    ">
+    <span data-else data-is="text" data-bind="@click = () => setEditing(id)"></span>
+    <button data-bind="@click = () => removeTodo(id)">Remove</button>
   </li>
 </ul>
+<div>
+  <input data-if="editing === undefined" placeholder = "What's next?" data-bind="
+    @mount = el => startEditing(el, text => (text && addTodo(text), setEditing(null)))
+  ">
+  <span data-else data-bind="@click = () => setEditing(undefined)">+ Add todo</span>
+</div>
 <!-- .text-strikethrough=done;
-
-<div data-if="condition"></div>
-<div data-elseif="anotherCondition"></div>
-<div data-else></div> -->
+-->
