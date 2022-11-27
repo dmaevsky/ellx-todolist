@@ -5,29 +5,34 @@
 
 </script>
 
-<pre data-is="JSON.stringify([...todos.values()], null, 2)"></pre>
-<pre data-is="JSON.stringify(editing)"></pre>
-
-<ul data-for="[id, { text, done }] of todos">
-  <li>
-    <input type="checkbox" data-bind="
-      checked = done
-      @input = e => editTodo(id, { done: e.target.checked })
-    ">
-    <input data-if="editing === id" placeholder = "What's next?" data-bind="
-      value = text
-      @mount = el => startEditing(el, () => setEditing(null))
-      @input = e => editTodo(id, { text: e.target.value })
-    ">
-    <span data-else data-is="text" data-bind="@click = () => setEditing(id)"></span>
-    <button data-bind="@click = () => removeTodo(id)">Remove</button>
-  </li>
-</ul>
-<div>
-  <input data-if="editing === undefined" placeholder = "What's next?" data-bind="
-    @mount = el => startEditing(el, text => (text && addTodo(text), setEditing(null)))
-  ">
-  <span data-else data-bind="@click = () => setEditing(undefined)">+ Add todo</span>
+<div data-for="[id, { text, done }] of todos">
+  <div class="row highlight">
+    <div class="col">
+      <input type="checkbox" data-bind="
+        checked = done
+        @input = e => editTodo(id, { done: e.target.checked })
+      ">
+      <input data-if="editing === id" placeholder = "What's next?" data-bind="
+        value = text
+        @mount = el => startEditing(el, () => setEditing(null))
+        @input = e => editTodo(id, { text: e.target.value })
+      " class="blend-in">
+      <span data-else data-is="text" data-bind="
+        .line-through = done
+        @click = () => setEditing(id)
+        @keydown = () => setEditing(id)
+      " tabindex="0"></span>
+    </div>
+    <div class="1 col">
+      <a href="" class="show-on-hover" data-bind="@click = () => removeTodo(id)">🗑️</a>
+    </div>
 </div>
-<!-- .text-strikethrough=done;
--->
+</div>
+<div class="row">
+  <div class="col">
+    <input data-if="editing === undefined" placeholder = "What's next?" data-bind="
+      @mount = el => startEditing(el, text => (text && addTodo(text), setEditing(null)))
+    " class="blend-in">
+    <a href="" data-else data-bind="@click = () => setEditing(undefined)">📝 Add todo</span>
+  </div>
+</div>

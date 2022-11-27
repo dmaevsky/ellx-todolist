@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <script type="ellx">
-    import { count, increaseCount } from "./scripts/counter.js"
+    import { count, increaseCount, decreaseCount } from "./scripts/counter.js"
     import { router, currentPage } from "./pages/currentPage.js"
     import Test from "./pages/test_component.html"
 
@@ -13,24 +13,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title data-is="page.title"></title>
 
-  <link rel="icon" sizes="32x32" href="https://ellx.io/favicon-32x32.ea3e9899.png">
-  <link rel="icon" sizes="16x16" href="https://ellx.io/favicon-16x16.7ead8a00.png">
-  <link rel="mask-icon" href="https://ellx.io/safari-pinned-tab.svg" color="#5bbad5">
-  <!-- <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"> -->
+  <link rel="icon" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="stylesheet" href="/src/styles.css"/>
 </head>
 
 <body>
-  <div class="container">
-    <a href="/">Welcome</a>
-    <a href="/about">About</a>
-    <a href="/todos">Todos</a>
-    <a href="/whatever">404</a>
+  <div class="c">
+    <div>
+      <a href="/">Welcome</a>
+      <a href="/about">About</a>
+      <a href="/todos">Todos</a>
+      <a href="/whatever">404</a>
+    </div>
 
-    <div>Count is <span data-is="count"></span></div>
-    <button data-bind="@click=increaseCount">+</button>
+    <a data-bind="@click=increaseCount">⬆️</a>
+    Count is <span data-is="count"></span>
+    <a data-bind="@click=decreaseCount">⬇️</a>
 
     <div data-is="Test; { color: 'orange' }"></div>
 
+    <hr>
     <div data-is="page.body"></div>
   </div>
 </body>
