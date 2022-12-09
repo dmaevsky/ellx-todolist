@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "type": "module",
   "description": "Ellx2 Todo example",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dmaevsky/ellx-todolist.git"
+  },
   "scripts": {
     "debug": "node --inspect-brk node_modules/@ellx/framework/src/cli.js dev",
     "dev": "node_modules/@ellx/framework/src/cli.js dev -o",
@@ -11,7 +15,7 @@
   "author": "Dmitry Maevsky",
   "license": "MIT",
   "dependencies": {
-    "@ellx/framework": "^0.0.2",
+    "@ellx/framework": "^0.0.3",
     "@ellx/router": "^0.1.3",
     "tinyx": "^2.2.0"
   }
