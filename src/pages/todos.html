@@ -5,34 +5,30 @@
 
 </script>
 
-<div data-for="[id, { text, done }] of todos">
-  <div class="row highlight">
-    <div class="col">
-      <input type="checkbox" data-bind="
-        checked = done
-        @input = e => editTodo(id, { done: e.target.checked })
-      ">
-      <input data-if="editing === id" placeholder = "What's next?" data-bind="
-        value = text
-        @mount = el => startEditing(el, () => setEditing(null))
-        @input = e => editTodo(id, { text: e.target.value })
-      " class="blend-in">
-      <span data-else data-is="text" data-bind="
-        .line-through = done
-        @click = () => setEditing(id)
-        @keydown = () => setEditing(id)
-      " tabindex="0"></span>
-    </div>
-    <div class="1 col">
-      <a href="" class="show-on-hover" data-bind="@click = () => removeTodo(id)">🗑️</a>
-    </div>
-</div>
-</div>
-<div class="row">
-  <div class="col">
-    <input data-if="editing === undefined" placeholder = "What's next?" data-bind="
-      @mount = el => startEditing(el, text => (text && addTodo(text), setEditing(null)))
-    " class="blend-in">
-    <a href="" data-else data-bind="@click = () => setEditing(undefined)">📝 Add todo</span>
-  </div>
+<ul data-for="[id, { text, done }] of todos">
+  <li class="w-full group hover:bg-slate-100 flex items-center">
+    <input type="checkbox" class="mx-2" data-bind="
+      checked = done
+      @input = e => editTodo(id, { done: e.target.checked })
+    ">
+    <input data-if="editing === id" placeholder = "What's next?" class="bg-transparent grow outline-none" data-bind="
+      value = text
+      @mount = el => startEditing(el, () => setEditing(null))
+      @input = e => editTodo(id, { text: e.target.value })
+    ">
+    <span data-else data-is="text" class="grow" data-bind="
+      .line-through = done
+      @click = () => setEditing(id)
+      @keydown = () => setEditing(id)
+    " tabindex="0"></span>
+    <button class="invisible group-hover:visible group-focus-within:visible hover:opacity-60 px-4"
+      data-bind="@click = () => removeTodo(id)">🗑️
+    </button>
+  </li>
+</ul>
+<div class="mt-2">
+  <input data-if="editing === undefined" placeholder = "What's next?" data-bind="
+    @mount = el => startEditing(el, text => (text && addTodo(text), setEditing(null)))
+  " class="outline-none w-full">
+  <a href="" data-else data-bind="@click = () => setEditing(undefined)">📝 Add todo</span>
 </div>

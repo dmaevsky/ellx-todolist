@@ -20,13 +20,13 @@
 </head>
 
 <body>
-  <div class="c">
-    <div>
-      <a href="/">Welcome</a>
-      <a href="/about">About</a>
-      <a href="/todos">Todos</a>
-      <a href="/whatever">404</a>
-    </div>
+  <div class="max-w-3xl mx-auto px-4">
+    <nav class="my-2">
+      <a class="text-primary hover:opacity-60" href="/">Welcome</a>
+      <a class="text-primary hover:opacity-60" href="/todos">Todos</a>
+      <a class="text-primary hover:opacity-60" href="/whatever">404</a>
+      <a class="text-primary hover:opacity-60" href="/about">About</a>
+    </nav>
 
     <a href="" data-bind="@click=increaseCount">⬆️</a>
     Count is <span data-is="count"></span>
@@ -34,7 +34,7 @@
 
     <div data-is="Test; { color: 'green' }"></div>
 
-    <hr>
+    <hr class="my-2"></hrclass>
     <div data-is="page.body"></div>
   </div>
 </body>
